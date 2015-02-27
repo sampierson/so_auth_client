@@ -6,6 +6,7 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "sprockets/railtie"
 # require "rails/test_unit/railtie"
+require "./lib/sam"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -26,5 +27,7 @@ module SoAuthClient
     # config.i18n.default_locale = :de
 
     config.action_dispatch.default_headers.merge!({'X-Frame-Options' => 'ALLOWALL'})
+
+    # config.middleware.insert_before Rack::Sendfile, ::Sam
   end
 end
